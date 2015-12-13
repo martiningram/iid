@@ -45,17 +45,19 @@ mental side of the game are lacking. We present an approach to identify
 mentalities in tennis with dynamic response patterns that quantify how players'
 probabilities of winning a point vary in response to the changing situations of
 a match. Using nearly 3 million points played by professional male and female
-tennis players between 2011 and 2015, we found that top players were generally
-affected by the state of the score and a variety of pressure situations,
-exhibiting hot hand effects when up in the match, defeatist effects when down,
-and performing less effectively in clutch situations than on less important
-points. However, player-to-player variation in these dynamic effects revealed
-that not all players shared the average mentality profile. The distinct ways in
-which players deviated from the field highlighted a variety of differences in
-how players respond to pressure and point history and suggested a diversity of
+tennis players between 2011 and 2015, we found that top players \fxnote{Though
+  they are top players, maybe just go for players here? ``top'' sounds to me a
+  bit like the top 10 or so} were generally affected by the state of the score
+and a variety of pressure situations, exhibiting hot hand effects when up in the
+match, defeatist effects when down, and performing less effectively in clutch
+situations than on less important points. However, player-to-player variation in
+these dynamic effects revealed that not all players shared the average mentality
+profile \fxnote{... particularly on the ATP...?}. The distinct ways in which
+players deviated from the field highlighted a variety of differences in how
+players respond to pressure and point history and suggested a diversity of
 player mentalities at the elite level. Accounting for these dynamic changes in
 performance was shown to improve the prediction of match outcomes for the men's
-and women's games, substantiating the importance of mentality for performance in
+and women's tours, substantiating the importance of mentality for performance in
 tennis.
 
 
@@ -76,17 +78,17 @@ has received limited scientific study and there is currently a lack of
 quantitative evidence about the mentalities of today's top tennis players.
 
 Prior work attempting to measure the mental aspect of elite athletic performance
-has been limited for all sports, reflecting the challenges of measuring the
-mental game. Prior approaches have largely been qualitative in nature, relying
-on interviews\cite{young2011understanding} or surveys\cite{taylor1987predicting}
-of players and coaches to gain insight about the mental game. These studies have
-the drawback that they presuppose that salient mental skills can be measured
-with a questionnaire or elicited from a conversation with coaches and
-players. Such studies have also not taken advantage of the many years of
-historical performance data and what it can reveal about the mental
-game. \fxnote{Perhaps we could also say that tennis could be particularly suited
-  for measuring mental effects, given that it's an individual sport and we have
-  quite fine-grained data?}
+has been limited for all sports, including tennis, reflecting the challenges of
+measuring the mental game. Prior approaches have largely been qualitative in
+nature, relying on interviews\cite{young2011understanding} or
+surveys\cite{taylor1987predicting} of players and coaches to gain insight about
+the mental game. These studies have the drawback that they presuppose that
+salient mental skills can be measured with a questionnaire or elicited from a
+conversation with coaches and players. Such studies have also not taken
+advantage of the many years of historical performance data and what it can
+reveal about the mental game. \fxnote{Perhaps we could also say that tennis
+  could be particularly suited for measuring mental effects, given that it's an
+  individual sport and we have quite fine-grained data?}
 
 In this paper, we present a novel quantitative method to investigate the
 mentality of professional tennis players from observed match performance. Our
@@ -244,8 +246,9 @@ longer term momentum effects than those due to the outcome of the previous
 point, we tracked the point spread across games within a set, subtracting the
 points won in the set by the player serving from those of the player returning.
 
-\fxnote{Like the note above mentioned, I think this part is good but could do
-  with a bit more explanation of why we chose the predictors we did...?}
+\fxnote{Like the note above mentioned, I think this part is good but it might be
+  worth adding a little more of an explanation of why we chose the predictors we
+  did...?}
 
 
 \subsection{Model Estimation}
@@ -334,10 +337,10 @@ The linkage method is the technique applied to the pair-wise distances to
 determine a measure of the cluster distance. \textit{Single linkage} is a
 nearest neighbor method that assigns clusters based on the minimum
 distance. Average linkage chooses the cluster that minimizes the average
-distance between. Complete linkage is the opposite extreme of single linkage in
-that it assigns clusters by maximizing the difference between clusters. Each of
-the hierarchical techniques begin with all units assigned to a single cluster,
-i.e. a `bottom up' approach.
+distance between clusters. Complete linkage is the opposite extreme of single
+linkage in that it assigns clusters by maximizing the difference between
+clusters. Each of the hierarchical techniques begin with all units assigned to a
+single cluster, i.e. a `bottom up' approach.
 
 There is no universally best method among these; the performance, instead,
 depends on the properties of the data used \cite{kumar2014performance}. For this
@@ -357,11 +360,11 @@ repeated until all patterns could be uniquely described.
 It is possible that some players will not easily fit into any of the identified
 mentality types. One way this could arise is if a player's shifts in performance
 are essentially random, ups and downs that are unrelated to the specific
-conditions of the point. To examine which player's exhibited more or less of
-this kind of volatility in their mentality, we computed the mean Brier score of
-the PDM predictions for each player on serve and return when applied to the
-Grand Slam validation data. Outliers were flagged as players with variances that
-were 2 or more standard deviations from the mean.
+conditions of the point. To examine which players exhibited more or less of this
+kind of volatility in their mentality, we computed the mean Brier score of the
+PDM predictions for each player on serve and return when applied to the Grand
+Slam validation data. Outliers were flagged as players with variances that were
+2 or more standard deviations from the mean.
 
 \section{Results}
 
@@ -500,7 +503,7 @@ for the ATP. Six of the 11 factors\textemdash break points, being one point from
 a break point, being down a set, point importance, the outcome of the previous
 point, and the total points played in the previous game \textemdash showed
 important player-to-player variation (Table~\ref{tab:estimates}). Thus, male
-player responses to tiebreak points, being a set up, and having a lead in point
+player responses to tiebreak points, being a set up, and having a lead in points
 were more variable than for female players, whereas female player responses to
 the total points played in a game were more variable.
 
@@ -622,7 +625,7 @@ situations on serve and when down a point or a set on the return game, these
 players showed a greater drop in win probability than any others. Finding former
 World No. 1 Lleyton Hewitt in this group was unexpected but could be explained
 by the point-level data only covering the final years of his
-career. \fxnote{This is really good now!}
+career.
 
 \textit{Score Keepers}. In addition to being generally less confident on serve,
 the final group of players were unique in their response to the outcome of the
@@ -648,7 +651,7 @@ players also exhibit greater cool-headedness in clutch situations on the return
 game, but their most distinctive characteristic is the fighter's mentality
 suggested by their improved performance after long points. It is worth noting
 that World No. 1 Serena Williams, known for her mastery of the comeback, had the
-largest positive effect for long points on serve. \fxnote{Should this maybe
+largest positive effect for long points on serve. \fxnote{Should this maybe be
   ``serving after playing a long return game''?}
 
 \textit{Stoics}. Another group of players showed even greater cool-headedness on
@@ -740,14 +743,14 @@ for these dynamic changes in performance were shown to improve the prediction of
 match outcomes for the men's and women's games, substantiating the importance of
 mindset for performance in tennis.
 
-
 A fundamental feature of our approach for measuring mentality is the isolation
 of a player's response to changing match situations from his or her overall win
 ability. This is done by focusing on how a player's performance varies around
 his or her own baseline probability of winning a point. As a consequence of this
 separation of baseline ability from point-to-point variation in performance, the
 approach allows that players with different physical skills could still share a
-common mentality.
+common mentality. \fxnote{Maybe move this paragraph / parts of it into the
+  description of the model?}
 
 In spite of this flexibility in the approach, our findings revealed instances
 where the physical and mental sides of the game were closely linked. This was
@@ -831,7 +834,7 @@ of detail.
 \caption{Dendrogram of distances in ATP mentality profiles for players competing
   in the 2015 Grand Slams. Profiles consisted of 8 dynamic predictors on the
   service game and 8 on the return game. Dissimilarity was measured with a
-  manhattan distance and players were clustered using complete linkage.}
+  Manhattan distance and players were clustered using complete linkage.}
 \label{fig:atp_dendro}
 \end{figure}
 
@@ -854,7 +857,7 @@ of detail.
 \caption{Dendrogram of distances in WTA mentality profiles for players competing
   in the 2015 Grand Slams. Profiles consisted of 6 dynamic predictors on the
   service game and 6 on the return game. Dissimilarity was measured with a
-  manhattan distance and players were clustered using complete linkage.}
+  Manhattan distance and players were clustered using complete linkage.}
 \label{fig:wta_dendro}
 \end{figure}
 
