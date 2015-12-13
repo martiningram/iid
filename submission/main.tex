@@ -37,27 +37,24 @@
 \maketitle
 
 \begin{abstract}
-It is often said that winning in tennis is determined as much by a
-player's mental game as his or her physical ability yet quantifiable
-metrics for the mental side of the game are lacking. We present an
-approach to identify mentalities in tennis with dynamic response
-patterns that quantify how players probability of winning a point vary
-in response to the changing situations of a match. Using nearly 3
-million points played by professional male and female tennis players between
-2011 and 2015, we found that top players were
-generally affected by the state of the score and a variety of pressure
-situations, exhibiting hot hand effects when up in the match,
-defeatist effects when down, and performing less effectively in clutch
-situations than on less important points. However, player-to-player
-variation in these dynamic effects revealed that not all players
-shared the average mentality profile. The distinct ways in which
-players deviated from the field highlighted a variety of differences
-in how players respond to pressure and point history and suggested a
-diversity of player mentalities at the elite
-level. Accounting for these dynamic changes in performance were shown
-to improve the prediction of match outcomes for the men's and women's
-games, substantiating the importance of mentality for performance in tennis.
-
+It is often said that winning in tennis is determined as much by a player's
+mental game as his or her physical ability yet quantifiable metrics for the
+mental side of the game are lacking. We present an approach to identify
+mentalities in tennis with dynamic response patterns that quantify how players
+probability of winning a point vary in response to the changing situations of a
+match. Using nearly 3 million points played by professional male and female
+tennis players between 2011 and 2015, we found that top players were generally
+affected by the state of the score and a variety of pressure situations,
+exhibiting hot hand effects when up in the match, defeatist effects when down,
+and performing less effectively in clutch situations than on less important
+points. However, player-to-player variation in these dynamic effects revealed
+that not all players shared the average mentality profile. The distinct ways in
+which players deviated from the field highlighted a variety of differences in
+how players respond to pressure and point history and suggested a diversity of
+player mentalities at the elite level. Accounting for these dynamic changes in
+performance were shown to improve the prediction of match outcomes for the men's
+and women's games, substantiating the importance of mentality for performance in
+tennis.
 
 
 \keywords{Tennis\and Player evaluation\and Mixed modeling\and Hierarchical clustering}
@@ -65,63 +62,62 @@ games, substantiating the importance of mentality for performance in tennis.
 
 \section{Introduction}
 
-Mentality is an essential ingredient of all athletic
-performance. However, the importance of a player's mental skills in
-deciding the outcomes of competition or how fans experience
-competition varies widely across sports. Tennis, the
-most popular individual sport in the
-world\footnote{\url{http://www.biggestglobalsports.com}}, is
-frequently said to be as much about the mind as the body. Indeed, Jimmy Connors, holder
-of 109 career titles, has gone so far as to estimate that 95\% of tennis is a mind
-game\cite{samulski2007tennis}. Despite these claims, the mental side
-of tennis has received limited scientific study and there is currently
-a lack of quantitative
-evidence about the mentalities of today's top tennis players.
+Mentality is an essential ingredient of all athletic performance. However, the
+importance of a player's mental skills in deciding the outcomes of competition
+or how fans experience competition varies widely across sports. Tennis, the most
+popular individual sport in the
+world\footnote{\url{http://www.biggestglobalsports.com}}, is frequently said to
+be as much about the mind as the body. Indeed, Jimmy Connors, holder of 109
+career titles, has gone so far as to estimate that 95\% of tennis is a mind
+game\cite{samulski2007tennis}. Despite these claims, the mental side of tennis
+has received limited scientific study and there is currently a lack of
+quantitative evidence about the mentalities of today's top tennis players.
 
-Prior work attempting to measure the mental aspect of elite
-athletic performance has been limited for all sports let alone
-tennis, reflecting the challenges of
-measuring the mental game. Prior approaches have largely been
-qualitative in nature, relying on interviews\cite{young2011understanding} or surveys\cite{taylor1987predicting} of players and
-coaches to gain insight about the mental game. These studies have the
-drawback that they presuppose that salient mental skills can be
-measured with a questionnaire or elicited from a conversation with
-coaches and players. Such studies have also not taken advantage of the
-many years of historical performance data and what it can reveal about the mental game. 
+Prior work attempting to measure the mental aspect of elite athletic performance
+has been limited for all sports let alone tennis, reflecting the challenges of
+measuring the mental game. Prior approaches have largely been qualitative in
+nature, relying on interviews\cite{young2011understanding} or
+surveys\cite{taylor1987predicting} of players and coaches to gain insight about
+the mental game. These studies have the drawback that they presuppose that
+salient mental skills can be measured with a questionnaire or elicited from a
+conversation with coaches and players. Such studies have also not taken
+advantage of the many years of historical performance data and what it can
+reveal about the mental game.
 
-In this paper, we present a novel quantitative method to investigate the mentality
-of professional tennis players from observed match performance. Our approach is based on the premise
-that tennis player's
-reveal aspects of their mental skills in the way they respond to
-changes in the state of play over the course of match, i.e. the
-dynamics of a match. Using nearly 3 million points played in
-professional singles matches for the men's and women's tours between 2011 and 2015, we quantify player
-response patterns to point dynamics, identify common mentalities, and
-evaluate the importance of mentality for match performance. 
+In this paper, we present a novel quantitative method to investigate the
+mentality of professional tennis players from observed match performance. Our
+approach is based on the premise that tennis player's reveal aspects of their
+mental skills in the way they respond to changes in the state of play over the
+course of match, i.e. the dynamics of a match. Using nearly 3 million points
+played in professional singles matches for the men's and women's tours between
+2011 and 2015, we quantify player response patterns to point dynamics, identify
+common mentalities, and evaluate the importance of mentality for match
+performance.
 
 
 \section{Methods}
 
 \subsection{Data}
 
-Point-level data was obtained for singles matches played on the ATP
-and WTA tours during the 2011 to 2015 seasons. For the ATP tour, matches
-were restricted to those played at tournaments in the 250 series or above, which
-includes the 9 Masters 1000 events and 4 Grand Slams (Australian Open,
-French Open, Wimbledon, and US Open),
-where players have the opportunity to earn the most ranking points and
-prize money during the season. The WTA data included matches from all
-International, Premier, and Grand Slam tournaments. To ensure an
-adequate sample size of points for each player, only players with 3 or
-more match appearances were eligible for inclusion. Point-level data
-was obtained from the Tennis Abstract\footnote{Github source: \url{github.com/JeffSackmann/tennis_pointbypoint}} and accessed with functions from
-the R package \texttt{deuce}\footnote{Github source: \url{github.com/skoval/deuce}} .
+Point-level data was obtained for singles matches played on the ATP and WTA
+tours during the 2011 to 2015 seasons. For the ATP tour, matches were restricted
+to those played at tournaments in the 250 series or above, which includes the 9
+Masters 1000 events and 4 Grand Slams (Australian Open, French Open, Wimbledon,
+and US Open), where players have the opportunity to earn the most ranking points
+and prize money during the season. The WTA data included matches from all
+International, Premier, and Grand Slam tournaments. To ensure an adequate sample
+size of points for each player, only players with 3 or more match appearances
+were eligible for inclusion. Point-level data was obtained from the Tennis
+Abstract\footnote{Github source:
+  \url{github.com/JeffSackmann/tennis_pointbypoint}} and accessed with functions
+from the R package \texttt{deuce}\footnote{Github source:
+  \url{github.com/skoval/deuce}} .
 
-The final datasets for the present paper included over 1.6 million
-points across 10,101 matches played by 434 players for the ATP tour
-and 1.4 million points for 424 players and 9,668 matches
-for the WTA tour (Table~\ref{tab:description}). Approximately 20\% of
-the points in these datasets were played at the Grand Slams. 
+The final datasets for the present paper included over 1.6 million points across
+10,101 matches played by 434 players for the ATP tour and 1.4 million points for
+424 players and 9,668 matches for the WTA tour
+(Table~\ref{tab:description}). Approximately 20\% of the points in these
+datasets were played at the Grand Slams.
 
 
 \begin{table}[ht] \centering
@@ -151,281 +147,248 @@ Points & 1,610,439 & 1,373,095 \\
 \label{tab:description}
 \end{table}
 
-The analytic datasets were divided into training and validation data
-for the purpose of model development and testing. The validation data
-were the points played in matches at the 2015 Grand Slam
-tournaments, the most recent majors at the time of writing. The training data for each Grand Slam were all points
-played up to but not including the Grand Slam event. Thus, four
-different training and testing datasets were constructed for each
-tour and all tournaments included in the training were independent of
-the validation tournaments. The validation data included 105,717
-points for the ATP and 71,341 for the WTA.
+The analytic datasets were divided into training and validation data for the
+purpose of model development and testing. The validation data were the points
+played in matches at the 2015 Grand Slam tournaments, the most recent majors at
+the time of writing. The training data for each Grand Slam were all points
+played up to but not including the Grand Slam event. Thus, four different
+training and testing datasets were constructed for each tour and all tournaments
+included in the training were independent of the validation tournaments. The
+validation data included 105,717 points for the ATP and 71,341 for the WTA.
 
 
 \subsection{Player Dynamic Model}
 
-We introduce a player dynamic model (PDM) to quantify how an individual
-player's performance is uniquely affected by the conditions of a point
-in a match. The player-specific dynamics estimated from the PDM will
-be the basis for characterizing player mentality. The dependent
-variable of the model was the win-loss outcome for a point, with
-respect to the server of that point. Let $y_{ijk}$ be the point outcome
-(Win = 1, Loss = 0) for the $i$th player serving against the $j$th opponent, on the $k$th service
-point. 
+We introduce a player dynamic model (PDM) to quantify how an individual player's
+performance is uniquely affected by the conditions of a point in a match. The
+player-specific dynamics estimated from the PDM will be the basis for
+characterizing player mentality. The dependent variable of the model was the
+win-loss outcome for a point, with respect to the server of that point. Let
+$y_{ijk}$ be the point outcome (Win = 1, Loss = 0) for the $i$th player serving
+against the $j$th opponent, on the $k$th service point.
 
-The PDM describes the relationship between the conditions of
-the point and the point outcome with the following linear mixed
-probability model, 
+The PDM describes the relationship between the conditions of the point and the
+point outcome with the following linear mixed probability model,
 
 \begin{equation}
 E\lbrack y_{ijk} \rbrack = (\alpha_{i} + \beta_{j} + \theta)' \mathbf{X}_{ijk}.
 \label{eq:pdm}
 \end{equation}
 
-\noindent The vector $\mathbf{X}_{ijk}$ contains an intercept, which
-defines the baseline serve and return ability of the player and opponent, and $p$
-dynamic features that affect performance on the point outcome (e.g. being a
-set down, facing a break point, etc.). The parameters $\theta$ are
-fixed dynamic effects that represent how player's are affected by
-conditions on average. The parameters $\alpha_i$ and $\beta_j$ are
-player random effects for each feature for the $i$th player who is
-serving and $j$th
-player who is returning and each are drawn from  from a
-multivariate normal distribution with zero mean and general variance
-structure. The player random effects allow
-that some players could be more or less affected by the state of a
-point and that these effects could additionally depend on whether a player
-is serving or returning. The combination of the server and returner
-effects determine the expected win probability for the
-point. 
+\noindent The vector $\mathbf{X}_{ijk}$ contains an intercept, which defines the
+baseline serve and return ability of the player and opponent, and $p$ dynamic
+features that affect performance on the point outcome (e.g. being a set down,
+facing a break point, etc.). The parameters $\theta$ are fixed dynamic effects
+that represent how player's are affected by conditions on average. The
+parameters $\alpha_i$ and $\beta_j$ are player random effects for each feature
+for the $i$th player who is serving and $j$th player who is returning and each
+are drawn from from a multivariate normal distribution with zero mean and
+general variance structure. The player random effects allow that some players
+could be more or less affected by the state of a point and that these effects
+could additionally depend on whether a player is serving or returning. The
+combination of the server and returner effects determine the expected win
+probability for the point.
 
-\textit{Remarks.} The PDM can be viewed as an extension of two
-established models for predicting point outcomes in tennis. When the
-feature matrix $\mathbf{X}$ includes only an intercept, the PDM
-becomes a regression model for the opponent-adjustment proposed by Barnett and
-Clarke. Klaassen and Magnus also proposed a dynamic model to test for
-deviations from the IID model, which says that points in a match are
-independent and identically distributed. In contrast to the PDM, the model of Klaassen and Magnus considers a limited number of
-dynamic effects and does not incorporate player-specific
-effects, which are the parameters of primary interest in the present work.
+\textit{Remarks.} The PDM can be viewed as an extension of two established
+models for predicting point outcomes in tennis. When the feature matrix
+$\mathbf{X}$ includes only an intercept, the PDM becomes a regression model for
+the opponent-adjustment proposed by Barnett and Clarke. Klaassen and Magnus also
+proposed a dynamic model to test for deviations from the IID model, which says
+that points in a match are independent and identically distributed. In contrast
+to the PDM, the model of Klaassen and Magnus considers a limited number of
+dynamic effects and does not incorporate player-specific effects, which are the
+parameters of primary interest in the present work.
 
 \subsection{Predictors}
 
 We fit the PDM with eleven candidate predictors that are listed in
-Table~\ref{tab:description}. The candidates included a range of dynamic
-point, game, and set conditions. The majority of the point conditions
-focus on various types of pressure situations, including
-indicators of whether a point occurs during a tiebreak, is a
-break point opportunity for the returner, or a point away from a break
-point opportunity (Break point -1). These predictors can be considered types of
-important points because they have a greater influence on the game or
-set outcomes than other points. We also include a probabilistic measure of
-point importance, defined by Morris\cite{morris1977most}, that is equal to the
-average change in match win probability when the current point is won
-compared to win it is lost, given the state of the match at this
-point. One final point
-condition is an indicator of whether the server won the previous point
-(Last won), which captures short-term correlation between points that
-could arise from a one-point hot hand effect, for example. 
+Table~\ref{tab:description}. The candidates included a range of dynamic point,
+game, and set conditions. The majority of the point conditions focus on various
+types of pressure situations, including indicators of whether a point occurs
+during a tiebreak, is a break point opportunity for the returner, or a point
+away from a break point opportunity (Break point -1). These predictors can be
+considered types of important points because they have a greater influence on
+the game or set outcomes than other points. We also include a probabilistic
+measure of point importance, defined by Morris\cite{morris1977most}, that is
+equal to the average change in match win probability when the current point is
+won compared to win it is lost, given the state of the match at this point. One
+final point condition is an indicator of whether the server won the previous
+point (Last won), which captures short-term correlation between points that
+could arise from a one-point hot hand effect, for example.
 
-Three predictors contained information about game history. Two
-concerned missed opportunities to break service and how this affected
-the subsequent service game (Missed break, serve) and return game
-(Missed break, return). In the coding for these predictors, it is
-assumed that the psychological impact of a missed break is a
-within-set effect and does not carry over into the games of other sets
-or tiebreaks.  We
-also examined how the number of points played in the previous game
-might influence play in the current game. A more closely contested
-game will have more points played, and could serve as an indirect
-measure of player fatigue. 
+Three predictors contained information about game history. Two concerned missed
+opportunities to break service and how this affected the subsequent service game
+(Missed break, serve) and return game (Missed break, return). In the coding for
+these predictors, it is assumed that the psychological impact of a missed break
+is a within-set effect and does not carry over into the games of other sets or
+tiebreaks.  We also examined how the number of points played in the previous
+game might influence play in the current game. A more closely contested game
+will have more points played, and could serve as an indirect measure of player
+fatigue.
 
-There were also three set conditions included in the set of
-predictors. Two of the predictors indicated when the player serving
-was either up a set or more (Set+) or down a set or more (Set-) in the
-match. Finally, in order to capture longer term
-momentum effects than those due to the outcome of the previous point,
-we tracked the point spread across games within a set, subtracting the
-points won in the set by the player serving from those of the player
-returning. 
+There were also three set conditions included in the set of predictors. Two of
+the predictors indicated when the player serving was either up a set or more
+(Set+) or down a set or more (Set-) in the match. Finally, in order to capture
+longer term momentum effects than those due to the outcome of the previous
+point, we tracked the point spread across games within a set, subtracting the
+points won in the set by the player serving from those of the player returning.
 
 
 \subsection{Model Estimation}
 
-The PDM was implemented with the R  package \texttt{lme4} using a
-Gaussian family for the outcome distribution. The Gaussian
-model has a number of desirable features. Most importantly, the
-dynamic effects have a simple and meaningful interpretation, as they
-represent the absolute change in point
-win probability for a
-one unit increase in a feature. The model is also the most
-computationally efficient within the generalized linear
-family. However, the model is most appropriate for continuous
-outcomes, whose mean, unlike a binary outcome, does not have a
-constrained support. 
+The PDM was implemented with the R package \texttt{lme4} using a Gaussian family
+for the outcome distribution. The Gaussian model has a number of desirable
+features. Most importantly, the dynamic effects have a simple and meaningful
+interpretation, as they represent the absolute change in point win probability
+for a one unit increase in a feature. The model is also the most computationally
+efficient within the generalized linear family. However, the model is most
+appropriate for continuous outcomes, whose mean, unlike a binary outcome, does
+not have a constrained support.
 
-Klaassen and Magnus
-have previously shown that the linear model works well in practice for modeling
-point win probabilities. We
-also conducted our own investigation by obtaining marginal
-predictions for the dynamic effects using a logistic model and
-comparing these to their corresponding effects with the linear
-probability model. The effects differed by no more than one
-significant digit, indicating that the lack of constrained estimation
-had a negligible impact on the PDM estimates.
+Klaassen and Magnus have previously shown that the linear model works well in
+practice for modeling point win probabilities. We also conducted our own
+investigation by obtaining marginal predictions for the dynamic effects using a
+logistic model and comparing these to their corresponding effects with the
+linear probability model. The effects differed by no more than one significant
+digit, indicating that the lack of constrained estimation had a negligible
+impact on the PDM estimates.
 
-In addition to the PDM, we fit two additional models for the purpose
-of evaluating the overall improvement in prediction performance with
-the inclusion of player-specific dynamics. One of these was a simpler
-version of the dynamic model that had average effects for the eleven
-dynamics and only an intercept term for the player effects. We will
-refer to this model as the average dynamic model (ADM). The second
-model had only an intercept term for the average and player
-effect. Without any dynamic effects, this model is equivalent to an
-IID model. 
+In addition to the PDM, we fit two additional models for the purpose of
+evaluating the overall improvement in prediction performance with the inclusion
+of player-specific dynamics. One of these was a simpler version of the dynamic
+model that had average effects for the eleven dynamics and only an intercept
+term for the player effects. We will refer to this model as the average dynamic
+model (ADM). The second model had only an intercept term for the average and
+player effect. Without any dynamic effects, this model is equivalent to an IID
+model.
 
 \subsection{Model Performance}
 
-To summarize the overall magnitude and significance of the dynamic
-effects, we fit the ADM with all
-of the available data and computed 95\% confidence intervals for each
-effect.  The added value of including player-specific effects for each
-dynamic feature was measured by the change in the Akaike Information
-Criterion (AIC). The AIC is a measure of overall model fit that
-allows comparisons between non-nested models and awards more parsimonious models. For each
-dynamic predictor, we estimated the change in AIC with the inclusion
-of player-specific effects versus a constant effect for all players. 
+To summarize the overall magnitude and significance of the dynamic effects, we
+fit the ADM with all of the available data and computed 95\% confidence
+intervals for each effect.  The added value of including player-specific effects
+for each dynamic feature was measured by the change in the Akaike Information
+Criterion (AIC). The AIC is a measure of overall model fit that allows
+comparisons between non-nested models and awards more parsimonious models. For
+each dynamic predictor, we estimated the change in AIC with the inclusion of
+player-specific effects versus a constant effect for all players.
 
-To assess the implications of mentality on points for predicting the
-outcomes of matches, we used a Monte Carlo simulation to test the
-predictive performance of the PDM. The simulator ran $5,000$ trial
-matches for each pairing of the 2015 Grand Slams (a best-of-five
-format for the ATP and best-of-three for the WTA). Each simulated point on serve
-in a match adjusted the server's probability of winning the point
-according to the state of that point as described by the PDM, and the
-fraction of trial matches won gave an estimate of the probability that
-a player won the match. The
-player dynamic match predictions were compared to two alternative
-models: the ADM that assumes constant dynamic effects for all players
-and an IID model that assumes no dynamic effects, i.e. a constant
-point win
-probability for each server. Our primary metric of performance was
-log loss, as it places a high penalty on overconfident predictions\cite{yuan2015mixture}. 
+To assess the implications of mentality on points for predicting the outcomes of
+matches, we used a Monte Carlo simulation to test the predictive performance of
+the PDM. The simulator ran $5,000$ trial matches for each pairing of the 2015
+Grand Slams (a best-of-five format for the ATP and best-of-three for the
+WTA). Each simulated point on serve in a match adjusted the server's probability
+of winning the point according to the state of that point as described by the
+PDM, and the fraction of trial matches won gave an estimate of the probability
+that a player won the match. The player dynamic match predictions were compared
+to two alternative models: the ADM that assumes constant dynamic effects for all
+players and an IID model that assumes no dynamic effects, i.e. a constant point
+win probability for each server. Our primary metric of performance was log loss,
+as it places a high penalty on overconfident predictions\cite{yuan2015mixture}.
 
 
 
 \subsection{Identifying Mentality Types}
 
-The ways in which a player's performance is affected by the conditions
-of a match provide insight into the player's mentality. The set of
-player-specific dynamic effects from the PDM\textemdash which represent how much
-more or less a player's performance on a point shifts in response to
-conditions compared to the field\textemdash provide a mentality
-profile. To identify common mentalities on the tour, we applied a
-hierarchical clustering method to the dynamic profiles of the players
-who competed in the 2015 Grand Slams. Only the most
-salient features for distinguishing player types were included, which
-were defined as the features that showed an AIC
-improvement over the ADM that indicated significant variation in the effect from one player to the
-next. 
+The ways in which a player's performance is affected by the conditions of a
+match provide insight into the player's mentality. The set of player-specific
+dynamic effects from the PDM\textemdash which represent how much more or less a
+player's performance on a point shifts in response to conditions compared to the
+field\textemdash provide a mentality profile. To identify common mentalities on
+the tour, we applied a hierarchical clustering method to the dynamic profiles of
+the players who competed in the 2015 Grand Slams. Only the most salient features
+for distinguishing player types were included, which were defined as the
+features that showed an AIC improvement over the ADM that indicated significant
+variation in the effect from one player to the next.
 
-Prior to clustering, the dynamics effects of the mentality profiles
-were converted from their probability scale to a z-score so that each
-effect would have the same mean and variance and allow for direct
-comparison between effects. A distance measure was then applied to all
-possible pairs of the standardized profiles (e.g. Player A's
-standardized dynamics on tiebreaks, break points, etc. versus Player
-B), which results in a dissimilarity matrix. We then apply a linkage
-approach to identify clusters among players. 
+Prior to clustering, the dynamics effects of the mentality profiles were
+converted from their probability scale to a z-score so that each effect would
+have the same mean and variance and allow for direct comparison between
+effects. A distance measure was then applied to all possible pairs of the
+standardized profiles (e.g. Player A's standardized dynamics on tiebreaks, break
+points, etc. versus Player B), which results in a dissimilarity matrix. We then
+apply a linkage approach to identify clusters among players.
 
-There are a number of options available for both the distance metric
-and linkage approaches and the choice of method in each case could potentially influence
-the resulting clusters. Three common measures of distance are the
-Euclidean ($L_2$-norm), the Manhattan ($L_1$-norm), and absolute
-maximum (or Chebyshev's distance). The methods primarily differ in
-their response to outliers with the maximum distance being most
-sensitive to extremes and the correlation least sensitive.  
+There are a number of options available for both the distance metric and linkage
+approaches and the choice of method in each case could potentially influence the
+resulting clusters. Three common measures of distance are the Euclidean
+($L_2$-norm), the Manhattan ($L_1$-norm), and absolute maximum (or Chebyshev's
+distance). The methods primarily differ in their response to outliers with the
+maximum distance being most sensitive to extremes and the correlation least
+sensitive.
 
-The linkage method is the technique applied to the pair-wise distances
-to determine a measure of the cluster distance. \textit{Single
-  linkage} is a nearest neighbor method that assigns clusters based on
-the minimum distance. Average linkage chooses the cluster that
-minimizes the average distance between. Complete linkage is the
-opposite extreme of single linkage in that it assigns clusters by
-maximizing the difference between clusters. Each of the hierarchical
-techniques begin with all units assigned to a single cluster, i.e. a
-`bottom up' approach. 
+The linkage method is the technique applied to the pair-wise distances to
+determine a measure of the cluster distance. \textit{Single linkage} is a
+nearest neighbor method that assigns clusters based on the minimum
+distance. Average linkage chooses the cluster that minimizes the average
+distance between. Complete linkage is the opposite extreme of single linkage in
+that it assigns clusters by maximizing the difference between clusters. Each of
+the hierarchical techniques begin with all units assigned to a single cluster,
+i.e. a `bottom up' approach.
 
-There is no universally best method among these; the performance,
-instead, depends on the properties of the data used
-\cite{kumar2014performance}. For this reason, each
-combination of distance measure and linkage measure were examined. The
-approach selected was one that showed the largest number of patterns
-containing two or more players per cluster. 
+There is no universally best method among these; the performance, instead,
+depends on the properties of the data used \cite{kumar2014performance}. For this
+reason, each combination of distance measure and linkage measure were
+examined. The approach selected was one that showed the largest number of
+patterns containing two or more players per cluster.
 
-The choice of the number of clusters was selected by beginning with a
-large number ($K = 12$) and visually inspecting the patterns of each
-cluster with parallel coordinate plots. When two or more clusters
-could not be easily distinguished the number of clusters was reduced
-by one. This process was repeated until all patterns could be
-uniquely described. 
-
+The choice of the number of clusters was selected by beginning with a large
+number ($K = 12$) and visually inspecting the patterns of each cluster with
+parallel coordinate plots. When two or more clusters could not be easily
+distinguished the number of clusters was reduced by one. This process was
+repeated until all patterns could be uniquely described.
 
 
 \subsection{Player Unpredictability}
 
-It is possible that some players will not easily fit into any of the
-identified mentality types. One way this could arise is if a player's
-shifts in performance are essentially random, ups and downs that are
-unrelated to the specific conditions of the point. To examine which
-player's exhibited more or less of this kind of volatility in their
-mentality, we computed the mean Brier score of the PDM predictions for each player on serve and
-return when applied to the Grand Slam validation data. Outliers were flagged
-as players with variances that were 2 or more standard deviations from
-the mean. 
+It is possible that some players will not easily fit into any of the identified
+mentality types. One way this could arise is if a player's shifts in performance
+are essentially random, ups and downs that are unrelated to the specific
+conditions of the point. To examine which player's exhibited more or less of
+this kind of volatility in their mentality, we computed the mean Brier score of
+the PDM predictions for each player on serve and return when applied to the
+Grand Slam validation data. Outliers were flagged as players with variances that
+were 2 or more standard deviations from the mean.
 
 \section{Results}
 
 \subsection{Characteristics of Dynamic Predictors}
 
-Among the eight categorical dynamics, a
-server's win on the previous point was the most common, occurring
-slightly more than half of the time for each tour
-(Table~\ref{tab:description}). For one of every five points on serve,
-at least one competitor would be expected to be a set up or down in a
-match based on recent years of matchplay. A
-similar percentage of points would be one point from a break point
-opportunity. Break points and points played in games following a
-missed break opportunity were some of the least common events among
-the predictors, happening approximately 10\% of the time during a
-match. The rarest dynamic event was a tiebreak, which occurred
-for 3\% of points on the men's tour and 2\% of points on the women's
-tour. 
+Among the eight categorical dynamics, a server's win on the previous point was
+the most common, occurring slightly more than half of the time for each tour
+(Table~\ref{tab:description}). For one of every five points on serve, at least
+one competitor would be expected to be a set up or down in a match based on
+recent years of matchplay. A similar percentage of points would be one point
+from a break point opportunity. Break points and points played in games
+following a missed break opportunity were some of the least common events among
+the predictors, happening approximately 10\% of the time during a match. The
+rarest dynamic event was a tiebreak, which occurred for 3\% of points on the
+men's tour and 2\% of points on the women's tour.
 
-The average importance of a point in a tennis match was 5 probability
-points, corresponding to an expected increase in match win probability
-of 5 percentage points when the point was won versus lost
-(Table~\ref{tab:description}). In recent years, we also found that the average number of points
-played in a game was 6 for both tours. The average point spread over
-the games in a set was approximately zero but it was not unusual to
-observe differences as large as 10 points. 
+The average importance of a point in a tennis match was 5 probability points,
+corresponding to an expected increase in match win probability of 5 percentage
+points when the point was won versus lost (Table~\ref{tab:description}). In
+recent years, we also found that the average number of points played in a game
+was 6 for both tours. The average point spread over the games in a set was
+approximately zero but it was not unusual to observe differences as large as 10
+points.
 
 \subsection{Average Dynamic Effects}
 
-The average dynamic effects on point outcomes identified factors that significantly increased the
-advantage of the server as well as effects that increased the
-advantage of the returner. For both tours, a server's win opportunity was negatively
-affected when playing a set down, when facing a break point, or when
-facing more important points overall (Table~\ref{tab:estimates}). By contrast, when a server was ahead a set (or more)
-in a match, had won the previous point, or otherwise had a lead in the point
-spread, we found the server generally had a significantly greater
-probability of winning a point. Because the point spread can take
-negative values when the server is behind in the set, the impact of
-spread would, in this case, have a comparable negative effect on the
-server's win probability. In data not shown, we assessed the linear
-assumption for point spread and found that the relationship was best
-described by a line with approximately equal slope for positive and
-negative spreads with respect to the player serving.
+The average dynamic effects on point outcomes identified factors that
+significantly increased the advantage of the server as well as effects that
+increased the advantage of the returner. For both tours, a server's win
+opportunity was negatively affected when playing a set down, when facing a break
+point, or when facing more important points overall
+(Table~\ref{tab:estimates}). By contrast, when a server was ahead a set (or
+more) in a match, had won the previous point, or otherwise had a lead in the
+point spread, we found the server generally had a significantly greater
+probability of winning a point. Because the point spread can take negative
+values when the server is behind in the set, the impact of spread would, in this
+case, have a comparable negative effect on the server's win probability. In data
+not shown, we assessed the linear assumption for point spread and found that the
+relationship was best described by a line with approximately equal slope for
+positive and negative spreads with respect to the player serving.
 
 \begin{table}[ht] \centering
 \caption{Average Effects of Dynamic Conditions on Point Performance
@@ -457,94 +420,88 @@ Criterion} \\
 \label{tab:estimates}
 \end{table}
 
-While the majority of the effects were nearly identical for both the
-men's and women's tours, there were a few interesting
-exceptions. Being a point away from a break point opportunity had a
-modest negative effect on the server's advantage among male players
-but not female players (Table~\ref{tab:estimates}). For the men's
-tour, missed break
-opportunities had a modest boost to the next return game of the
-returner who failed to convert but no evidence of an effect for the
-women's tour. However, we found some evidence of a decrease in serve
-advantage for the women's tour during tiebreak points, which was not
-observed for the men's game. 
+While the majority of the effects were nearly identical for both the men's and
+women's tours, there were a few interesting exceptions. Being a point away from
+a break point opportunity had a modest negative effect on the server's advantage
+among male players but not female players (Table~\ref{tab:estimates}). For the
+men's tour, missed break opportunities had a modest boost to the next return
+game of the returner who failed to convert but no evidence of an effect for the
+women's tour. However, we found some evidence of a decrease in serve advantage
+for the women's tour during tiebreak points, which was not observed for the
+men's game.
 
 \begin{figure}
 \includegraphics[scale=0.8]{figs/avg_effects.pdf}
-\caption{Average dynamic effects on the probability of winning on
-  serve based on point-level data for 2011-2015 ATP and WTA singles
-  matches. The y-axis shows the estimates change in the probability of winning a
-  point on serve (in percentage points) for a one standard deviation
-  change in the dynamic predictor. Error bars denote the 95\%
-  confidence interval for the estimated effect.}
+\caption{Average dynamic effects on the probability of winning on serve based on
+  point-level data for 2011-2015 ATP and WTA singles matches. The y-axis shows
+  the estimates change in the probability of winning a point on serve (in
+  percentage points) for a one standard deviation change in the dynamic
+  predictor. Error bars denote the 95\% confidence interval for the estimated
+  effect.}
 \label{fig:1}
 \end{figure}
 
 The estimates in Table~\ref{tab:estimates} represent the estimated change in
 serve probability (in percentage points units) associated with a one-unit
-increase in a dynamic factor. Because a one-unit increase might not
-be meaningful for all of the predictors (e.g. point importance), we
-compare the average effects on a standardized scale where each bar
-corresponds to the change in serve win probability for one standard
-deviation increase in the corresponding dynamic factor
-(Figure~\ref{fig:1}). This plot reveals that the strongest predictor
-for both tours was point spread, where a server with a one standard
-deviation lead in the point score was estimated to have a 1.4-1.5
-percentage point increase in point win probability. Being a set up or set down were
-runners up with a roughly 1 percentage point effect size, a server
-being a set up
-adding to the server's advantage and server being a set down adding to
-the returner's advantage. Other game and point conditions
-had more moderate effects, with some indication of a relatively stronger
-negative effects on importnat points and tiebreak points for female
-players compared to male players.
+increase in a dynamic factor. Because a one-unit increase might not be
+meaningful for all of the predictors (e.g. point importance), we compare the
+average effects on a standardized scale where each bar corresponds to the change
+in serve win probability for one standard deviation increase in the
+corresponding dynamic factor (Figure~\ref{fig:1}). This plot reveals that the
+strongest predictor for both tours was point spread, where a server with a one
+standard deviation lead in the point score was estimated to have a 1.4-1.5
+percentage point increase in point win probability. Being a set up or set down
+were runners up with a roughly 1 percentage point effect size, a server being a
+set up adding to the server's advantage and server being a set down adding to
+the returner's advantage. Other game and point conditions had more moderate
+effects, with some indication of a relatively stronger negative effects on
+importnat points and tiebreak points for female players compared to male
+players.
 
 \subsection{Player Dynamic Effects}
 
 
-The estimates shown in Table~\ref{tab:estimates} represent the effect of each dynamic feature if all players were equally
-influenced by the state of the match. However, because not all players
-have the same mentality on court, we would expect some players to respond differently to point conditions than others. The player dynamic
-model allows for player-to-player differences in their response to the
-state of the match by
-estimating a separate dynamic effect for each player. 
+The estimates shown in Table~\ref{tab:estimates} represent the effect of each
+dynamic feature if all players were equally influenced by the state of the
+match. However, because not all players have the same mentality on court, we
+would expect some players to respond differently to point conditions than
+others. The player dynamic model allows for player-to-player differences in
+their response to the state of the match by estimating a separate dynamic effect
+for each player.
 
-To determine
-when the player-specific dynamics better explained observed
+To determine when the player-specific dynamics better explained observed
 performance, we calculated the improvement in AIC with the PDM. The changes in
-AIC shown in Table~\ref{tab:estimates} reveal the presence of
-important player-to-player differences in the dynamic effect, positive
-changes reflecting a better fit with the PDM. For the men's game, all but three of the predictors demonstrated
-important player dynamics. The exceptions were both indicators of missed
-breaks of service and the total points played in the last game. While
-dynamic factors with a significant average effect were generally found
-to also have important player-to-player variation, tiebreak points
-were found to have important player-to-player variation in performance
-despite a weak average effect for the men's tour. 
+AIC shown in Table~\ref{tab:estimates} reveal the presence of important
+player-to-player differences in the dynamic effect, positive changes reflecting
+a better fit with the PDM. For the men's game, all but three of the predictors
+demonstrated important player dynamics. The exceptions were both indicators of
+missed breaks of service and the total points played in the last game. While
+dynamic factors with a significant average effect were generally found to also
+have important player-to-player variation, tiebreak points were found to have
+important player-to-player variation in performance despite a weak average
+effect for the men's tour.
 
-For the WTA, improvements with the PDM were fewer and smaller in
-magnitude than for the ATP. Six of the 11 factors\textemdash break
-points, being one point from a break point, being down a set, point
-importance, the outcome of the previous point, and the total points
-played in the previous game \textemdash showed important
-player-to-player variation (Table~\ref{tab:estimates}). Thus, male
-player responses to tiebreak points, being a set up, and having a lead
-in point were more variable than for female players, whereas female
-player responses to the total points played in a game were more variable. 
+For the WTA, improvements with the PDM were fewer and smaller in magnitude than
+for the ATP. Six of the 11 factors\textemdash break points, being one point from
+a break point, being down a set, point importance, the outcome of the previous
+point, and the total points played in the previous game \textemdash showed
+important player-to-player variation (Table~\ref{tab:estimates}). Thus, male
+player responses to tiebreak points, being a set up, and having a lead in point
+were more variable than for female players, whereas female player responses to
+the total points played in a game were more variable.
 
 \subsection{Model Performance}
 
-On the ATP, the importance of mental effects
-was confirmed by the greater accuracy and lower log loss for the
-predictions of the dynamic models compared to the IID model (Table
-\ref{tab:performance}). The consistent superior performance of the PDM
-over the ADM substantiates the importance of player differences in
-response to the changing situations of match play on the men's tour.
+On the ATP, the importance of mental effects was confirmed by the greater
+accuracy and lower log loss for the predictions of the dynamic models compared
+to the IID model (Table \ref{tab:performance}). The consistent superior
+performance of the PDM over the ADM substantiates the importance of player
+differences in response to the changing situations of match play on the men's
+tour.
 
-While the dynamic models also improved match predictions for the
-women's tour, the differences were smaller than for the men's and the
-performance of the average and player-specific dynamic models were
-statistically equivalent. 
+While the dynamic models also improved match predictions for the women's tour,
+the differences were smaller than for the men's and the performance of the
+average and player-specific dynamic models were statistically equivalent.
 
 \begin{table} \centering
 \caption{Summary of Match Prediction Performance for the 2015 Grand Slams}
@@ -552,17 +509,17 @@ statistically equivalent.
 \multirow{2}{*}{Tournament} & \multicolumn{3}{c}{Accuracy} & \multicolumn{3}{c}{Log Loss} \\ 
 &	IID &ADM &PDM &IID &ADM &PDM \\ \hline
 \textbf{ATP} & & & & & & \\
-~~Australian Open	&73.3&	74.1&	75.9&	0.516&	0.505	&0.491\\
-~~French Open	&70.6&	71.4&	73.9&	0.552&	0.541	&0.532\\
-~~US Open	&75.5&	75.5&	76.4&	0.507&	0.496&	0.493\\
-~~Wimbledon	&73.3&	72.5&	72.5&	0.540&	0.523&	0.517\\
-~Overall	&73.1&	73.3&	74.6&	0.529&	0.517&	0.509                    \\
+~~Australian Open	&73.3&	74.1&	76.7&	0.515&	0.505	&0.493\\
+~~French Open	        &70.6&	70.6&	73.9&	0.547&	0.542	&0.536\\
+~~US Open	        &74.5&	74.5&	76.4&	0.505&	0.498&	0.494\\
+~~Wimbledon	        &74.2&	73.3&	73.3&	0.534&	0.521&	0.514\\
+~Overall	        &73.1&	73.1&	75.1&	0.526&	0.517&	0.510\\
 \textbf{WTA}  & & & & & & \\
-~~Australian Open	&74.0&	73.2&	73.2&	0.595&	0.573&	0.576\\
-~~French Open	&72.7&	71.1&	71.9&	0.568&	0.561&	0.563\\
-~~US Open	&65.8&	65.0&	64.2&	0.663&	0.632&	0.634\\
-~~Wimbledon	&70.4&	70.4&	71.2&	0.568&	0.555&	0.560\\
-~Overall	&70.8&	69.9&	70.1&	0.598	&0.580& 0.583\\ \hline
+~~Australian Open	&73.2&	74.0&	75.6&	0.596&	0.574&	0.560\\
+~~French Open	        &72.7&	70.2&	71.9&	0.567&	0.562&	0.560\\
+~~US Open	        &64.2&	63.3&	64.2&	0.662&	0.631&	0.638\\
+~~Wimbledon	        &70.4&	70.4&	69.6&	0.570&	0.555&	0.558\\
+~Overall	        &70.1&	69.5&	70.3&	0.598	&0.580& 0.579\\ \hline
 \multicolumn{7}{p{3.8in}}{IID = Independent identically distributed, ADM =
   Average dynamic model, PDM = Player dynamic model}
 \end{tabular}
