@@ -9,7 +9,7 @@
 \usepackage{graphicx}
 
 % Package for notes
-\usepackage[draft]{fixme}
+\usepackage[draft, inline=true, margin=false]{fixme}
 
 %\linespread{2}
 
@@ -46,19 +46,18 @@ mentalities in tennis with dynamic response patterns that quantify how players'
 probabilities of winning a point vary in response to the changing situations of
 a match. Using nearly 3 million points played by professional male and female
 tennis players between 2011 and 2015, we found that top players \fxnote{Though
-  they are top players, maybe just go for players here? ``top'' sounds to me a
-  bit like the top 10 or so} were generally affected by the state of the score
-and a variety of pressure situations, exhibiting hot hand effects when up in the
+  they are top players, maybe just go for players here? ``top'' sounds a bit
+  like the top to me...?} were generally affected by the state of the score and
+a variety of pressure situations, exhibiting hot hand effects when up in the
 match, defeatist effects when down, and performing less effectively in clutch
 situations than on less important points. However, player-to-player variation in
 these dynamic effects revealed that not all players shared the average mentality
-profile \fxnote{... particularly on the ATP...?}. The distinct ways in which
-players deviated from the field highlighted a variety of differences in how
-players respond to pressure and point history and suggested a diversity of
-player mentalities at the elite level. Accounting for these dynamic changes in
-performance was shown to improve the prediction of match outcomes for the men's
-and women's tours, substantiating the importance of mentality for performance in
-tennis.
+profile. The distinct ways in which players deviated from the field highlighted
+a variety of differences in how players respond to pressure and point history
+and suggested a diversity of player mentalities at the elite level. Accounting
+for these dynamic changes in performance was shown to improve the prediction of
+match outcomes for the men's and women's tours, substantiating the importance of
+mentality for performance in tennis.
 
 
 \keywords{Tennis\and Player evaluation\and Mixed modeling\and Hierarchical clustering}
@@ -86,9 +85,11 @@ the mental game. These studies have the drawback that they presuppose that
 salient mental skills can be measured with a questionnaire or elicited from a
 conversation with coaches and players. Such studies have also not taken
 advantage of the many years of historical performance data and what it can
-reveal about the mental game. \fxnote{Perhaps we could also say that tennis
-  could be particularly suited for measuring mental effects, given that it's an
-  individual sport and we have quite fine-grained data?}
+reveal about the mental game. \fxnote{If you'd like to add another idea, we
+  could also say that tennis could be particularly suited for measuring mental
+  effects, given that it's an individual sport and we have quite fine-grained
+  data about the exact stage of the match? Not sure, just an idea -- but it's
+  what Klaassen \& Magnus often mention, I think.}
 
 In this paper, we present a novel quantitative method to investigate the
 mentality of professional tennis players from observed match performance. Our
@@ -162,7 +163,6 @@ training and testing datasets were constructed for each tour and all tournaments
 included in the training were independent of the validation tournaments. The
 validation data included 105,717 points for the ATP and 71,341 for the WTA.
 
-
 \subsection{Player Dynamic Model}
 
 We introduce a player dynamic model (PDM) to quantify how an individual player's
@@ -185,47 +185,48 @@ E\lbrack y_{ijk} \rbrack = (\alpha_{i} + \beta_{j} + \theta)' \mathbf{X}_{ijk}.
 baseline serve and return ability of the player and opponent, and $p$ dynamic
 features that affect performance on the point outcome (e.g. being a set down,
 facing a break point, etc.). The parameters $\theta$ are fixed dynamic effects
-that represent how players are affected by conditions \fxnote{I know you
-  mentioned you were looking for a different word. ``match situations'', maybe?}
-on average. The parameters $\alpha_i$ and $\beta_j$ are player random effects
-for each feature for the $i$th player who is serving and $j$th player who is
-returning and each are drawn from from a multivariate normal distribution with
-zero mean and general variance structure. The player random effects allow that
-some players could be more or less affected by the state of a point and that
-these effects could additionally depend on whether a player is serving or
-returning. The combination of the server and returner effects determine the
-expected win probability for the point.
+that represent how players are affected by conditions \fxnote{I know you were
+  looking for a different word. Later on, there's ``match state''; that sounds
+  good to me. Or maybe ``match situation''?}  on average. The parameters
+$\alpha_i$ and $\beta_j$ are player random effects for each feature for the
+$i$th player who is serving and $j$th player who is returning and each are drawn
+from from a multivariate normal distribution with zero mean and general variance
+structure. The player random effects allow that some players could be more or
+less affected by the state of a point and that these effects could additionally
+depend on whether a player is serving or returning. The combination of the
+server and returner effects determine the expected win probability for the
+point.
 
 \textit{Remarks.} The PDM can be viewed as an extension of two established
 models for predicting point outcomes in tennis. When the feature matrix
 $\mathbf{X}$ includes only an intercept, the PDM becomes a regression model for
-the opponent adjustment proposed by Barnett and Clarke
-\fxnote{\cite{barnett2005combining}}. Klaassen and Magnus also proposed a
-dynamic model to test for deviations from the IID model
-\fxnote{\cite{klaassen2001points}}, which says that points in a match are
-independent and identically distributed. In contrast to the PDM, the model of
-Klaassen and Magnus considers a limited number of dynamic effects and does not
-incorporate player-specific effects, which are the parameters of primary
-interest in the present work.
+the opponent adjustment proposed by Barnett and Clarke \fxnote{maybe add
+  \cite{barnett2005combining}?}. Klaassen and Magnus also proposed a dynamic
+model to test for deviations from the IID model \fxnote{maybe add
+  \cite{klaassen2001points}?}, which says that points in a match are independent
+and identically distributed. In contrast to the PDM, the model of Klaassen and
+Magnus considers a limited number of dynamic effects and does not incorporate
+player-specific effects, which are the parameters of primary interest in the
+present work.
 
 \subsection{Predictors}
 
 We fit the PDM with eleven candidate predictors that are listed in
 Table~\ref{tab:description}. The candidates included a range of dynamic point,
 game, and set conditions \fxnote{...and represent our attempt to identify as
-  many types of pressuring situations as possible...? Maybe compare against what
-  Klaassen \& Magnus chose and how and why we chose different ones?}. The
-majority of the point conditions focus on various types of pressure situations,
-including indicators of whether a point occurs during a tiebreak, is a break
-point opportunity for the returner, or a point away from a break point
-opportunity (Break point -1). These predictors can be considered types of
-important points because they have a greater influence on the game or set
-outcomes than other points. We also include a probabilistic measure of point
+  many types of pressuring situations as possible...? Also, is it maybe worth
+  mentioning what Klaassen \& Magnus chose and how and why we chose different
+  ones?}. The majority of the point conditions focus on various types of
+pressure situations, including indicators of whether a point occurs during a
+tiebreak, is a break point opportunity for the returner, or a point away from a
+break point opportunity (Break point -1). These predictors can be considered
+types of important points because they have a greater influence on the game or
+set outcomes than other points. We also include a probabilistic measure of point
 importance, defined by Morris\cite{morris1977most}, that is equal to the average
 change in match win probability when the current point is won compared to win it
 is lost, given the state of the match at this point. One final point condition
 is an indicator of whether the server won the previous point (Last won
-\fxnote{This is now ``Just won'' I think?}), which captures short-term
+\fxnote{This is now called ``Just won'' I think?}), which captures short-term
 correlation between points that could arise from a one-point hot hand effect,
 for example.
 
@@ -246,9 +247,12 @@ longer term momentum effects than those due to the outcome of the previous
 point, we tracked the point spread across games within a set, subtracting the
 points won in the set by the player serving from those of the player returning.
 
-\fxnote{Like the note above mentioned, I think this part is good but it might be
-  worth adding a little more of an explanation of why we chose the predictors we
-  did...?}
+\fxnote{I think this part describes the predictors well but it might be worth
+  adding a little more of an explanation of why we chose them. Maybe add that
+  they should capture a lot of different effects at different levels:
+  match-level through importance, set up \& down, set level with the point
+  spread, game level with missed opportunity and so on, and point level with
+  break point etc.}
 
 
 \subsection{Model Estimation}
@@ -262,13 +266,14 @@ efficient within the generalized linear family. However, the model is most
 appropriate for continuous outcomes, whose mean, unlike a binary outcome, does
 not have a constrained support.
 
-Klaassen and Magnus have previously shown \fxnote{\cite{klaassen2001points}}
-that the linear model works well in practice for modeling point win
-probabilities. We also conducted our own investigation by obtaining marginal
-predictions for the dynamic effects using a logistic model and comparing these
-to their corresponding effects with the linear probability model. The effects
-differed by no more than one significant digit, indicating that the lack of
-constrained estimation had a negligible impact on the PDM estimates.
+Klaassen and Magnus have previously shown \fxnote{maybe cite
+  \cite{klaassen2001points}} that the linear model works well in practice for
+modeling point win probabilities. We also conducted our own investigation by
+obtaining marginal predictions for the dynamic effects using a logistic model
+and comparing these to their corresponding effects with the linear probability
+model. The effects differed by no more than one significant digit, indicating
+that the lack of constrained estimation had a negligible impact on the PDM
+estimates.
 
 In addition to the PDM, we fit two additional models for the purpose of
 evaluating the overall improvement in prediction performance with the inclusion
@@ -385,10 +390,9 @@ The average importance of a point in a tennis match was 5 probability points,
 corresponding to an expected increase in match win probability of 5 percentage
 points when the point was won versus lost (Table~\ref{tab:description}). In
 recent years, we also found that the average number of points played in a game
-was 6 for both tours. \fxnote{Was it different before, or why in recent years?}
-The average point spread over the games in a set was approximately zero but it
-was not unusual to observe differences as large as 10 points. \fxnote{Maybe
-  explain a little -- when a player falls far behind in a set...?}
+was 6 for both tours. \fxnote{Was it different before?}  The average point
+spread over the games in a set was approximately zero but it was not unusual to
+observe differences as large as 10 points. 
 
 \subsection{Average Dynamic Effects}
 
@@ -431,7 +435,7 @@ Last game's points & -0.01 & (-0.04, 0.02) &-5.3& -0.02 &
 Criterion} \\
 \multicolumn{7}{p{5in}}{a Change in AIC with inclusion of player-specific
   dynamic effects compared to a constant dynamic effect. Larger values
-  indicate the player-specific model provided  a better fit to
+  indicate the player-specific model provided a better fit to
   observed point outcomes.} \\
 \end{tabular}
 \label{tab:estimates}
@@ -476,7 +480,6 @@ important points and tiebreak points for female players compared to male
 players.
 
 \subsection{Player Dynamic Effects}
-
 
 The estimates shown in Table~\ref{tab:estimates} represent the effect of each
 dynamic feature if all players were equally influenced by the state of the
@@ -565,10 +568,10 @@ common profile among top male players. This group exhibits a drop in performance
 when pressure is on the serve, as indicated by the negative effects when a set
 down and facing important points, including break points and tiebreaks
 (Figure~\ref{fig:atp_coord}). These players also exhibit sensitivity to the
-state of the point score, as is indicated by the positive effects on winning the
+state of the point score, as indicated by the positive effects on winning the
 previous point, having an edge in point spread, or being a set up. These `hot
 hand' effects induce a corresponding loser's curse on the return game, in which
-players who fall behing are even less likely to win a point than when even or
+players who fall behind are even less likely to win a point than when even or
 ahead in the score.
 
 \textit{John Isner}. One of two players with a unique profile was big server
@@ -588,7 +591,7 @@ than Isner.
 
 \textit{Fabio Fognini}. The second player found to have a unique mentality was
 Fabio Fognini, Italian No. 1 at the time of this writing. Fognini's distinctive
-characteristics backup the mercurial label he has often been given by the
+characteristics back up the mercurial label he has often been given by the
 media\footnote{Medlock, W. (June 14, 2015) `Ranking the Most Unpredictable
   Tennis Players Today'. Retrieved from:
   \url{http://bleacherreport.com/articles/2495031-ranking-the-most-unpredictable-tennis-players-today/}}. While
@@ -615,17 +618,16 @@ observed compared to the field was the tendency to raise their game to make an
 opportunity to break serve, shown by the positive effect on the point away from
 break point on the return game. Several of the most exciting players of today's
 game\textemdash Jo-Wilfried Tsonga and Ga\"{e}l Monfils\textemdash are included
-in this group. \fxnote{I like that you pick the players out, but maybe ``most
-  exciting'' could be a bit subjective? Maybe tone down to ``considered to be
-  most exciting'' or something?}
+in this group. \fxnote{I like that you mention the players, but maybe ``most
+  exciting'' could be a bit subjective (particularly for the hordes of Robredo
+  fans)? Maybe tone down to ``considered to be most exciting'' or something?}
 
 \textit{Tight}. This mentality was the only one that was noteworthy for being
 weaker on certain points than the average top player. Specifically, in clutch
 situations on serve and when down a point or a set on the return game, these
 players showed a greater drop in win probability than any others. Finding former
 World No. 1 Lleyton Hewitt in this group was unexpected but could be explained
-by the point-level data only covering the final years of his
-career.
+by the point-level data only covering the final years of his career.
 
 \textit{Score Keepers}. In addition to being generally less confident on serve,
 the final group of players were unique in their response to the outcome of the
@@ -669,8 +671,8 @@ closely contested game, which could be the effect of mental or physical fatigue.
 \textit{Tight}. While nearly all players show some decline in serve performance
 in pressure situations, only one group of players had strong and nearly equal
 negative effects when facing a break point, a break point opportunity, or other
-important points.  Although less pronounced on the return game, the greater
-negative effect on points away from break point suggest that vulnerability in
+important points. Although less pronounced on the return game, the greater
+negative effect on points away from break point suggests that vulnerability in
 clutch situations affects both parts of these players' game.
 
 \textit{Clutch Servers}. We also observed a group of players that were generally
@@ -690,7 +692,6 @@ field, these players tended to increase their win probability to avoid a
 possible break of service. Several rising stars of the WTA tour, including
 Garbine Muguruza and Belinda Bencic, were members of this group.
 
-
 \subsection{Unpredictable Performance}
 
 When we measured the prediction error of the PDM for each player (a metric of a
@@ -709,7 +710,7 @@ predictable on serve but much less so on return. It was surprising to observe
 three of the greatest players of the current era (Roger Federer, Novak Djokovic,
 and Rafael Nadal) in this group. \fxnote{Just wondering -- is Murray there
   anywhere? I think one can make the case that he's a step below these guys, but
-  he should maybe be almost up there...?}
+  he should maybe be almost up there?}
 
 While a similar pattern in predictability was found for the women's tour, fewer
 of the outlying players were as highly ranked as for the men. The exception was
@@ -719,11 +720,11 @@ of this result for the men's and women's tours makes the intriguing suggestion
 that mental steadiness on serve combined with variety on return could be one of
 the defining characteristics of a champion at the professional level.
 
-\fxnote{I do think this section is very cool, but do we completely understand
-  what's going on...? Also, should we maybe mention that perhaps the outliers
-  are predictable, except we are not capturing it with our (granted, pretty
-  extensive) model...? And offer some potential explanations -- different
-  ``gears'', tactics...?}
+\fxnote{I do think the way the champions show up here is very cool, but do we
+  completely understand what's going on, e.g. with Broady and the Pliskovas?
+  Also, should we maybe mention that the outliers may be predictable in their
+  own way which we are not capturing with the model, like you mentioned?  And
+  perhaps offer some potential explanations -- different ``gears'', tactics?}
 
 
 \section{Discussion}
@@ -776,7 +777,7 @@ should `play every point as it comes'\cite{klaassen2001points}.
 The average dynamic effects for the men's and women's tour were remarkably
 similar, with the only statistical difference being the women's absence of an
 average effect on points a point away from a break point that was found to
-negatively effect men's serve performance overall. However, player variation in
+negatively affect men's serve performance overall. However, player variation in
 effects was less extensive on the women's tour compared to the men's tour. Fewer
 of the dynamic variables showed significant player-to-player variation for
 female players, and the variation that was observed was largely restricted to
