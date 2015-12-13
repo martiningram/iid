@@ -8,15 +8,17 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 
+% Package for notes
+\usepackage[draft]{fixme}
+
 %\linespread{2}
 
 \begin{document}
 
-\title{Hot heads, cool heads, and tacticians: Measuring the mental
-  game in tennis}
+\title{Hot heads, cool heads, and tacticians: Measuring the mental game in
+  tennis}
 
-\titlerunning{Measuring the mental
-  game in tennis}  
+\titlerunning{Measuring the mental game in tennis}
 
 \authorrunning{S. Kovalchik, M. Ingram}
 
@@ -28,21 +30,21 @@
            \and
            M. Ingram \at
              Stratagem Technologies, London, United Kingdom \\
-             \email{martin.ingram@gmail.com}      
+             \email{martin@stratagem.co}      
 }
 
 \date{}
 
-
 \maketitle
 
 \begin{abstract}
+
 It is often said that winning in tennis is determined as much by a player's
 mental game as his or her physical ability yet quantifiable metrics for the
 mental side of the game are lacking. We present an approach to identify
-mentalities in tennis with dynamic response patterns that quantify how players
-probability of winning a point vary in response to the changing situations of a
-match. Using nearly 3 million points played by professional male and female
+mentalities in tennis with dynamic response patterns that quantify how players'
+probabilities of winning a point vary in response to the changing situations of
+a match. Using nearly 3 million points played by professional male and female
 tennis players between 2011 and 2015, we found that top players were generally
 affected by the state of the score and a variety of pressure situations,
 exhibiting hot hand effects when up in the match, defeatist effects when down,
@@ -52,7 +54,7 @@ that not all players shared the average mentality profile. The distinct ways in
 which players deviated from the field highlighted a variety of differences in
 how players respond to pressure and point history and suggested a diversity of
 player mentalities at the elite level. Accounting for these dynamic changes in
-performance were shown to improve the prediction of match outcomes for the men's
+performance was shown to improve the prediction of match outcomes for the men's
 and women's games, substantiating the importance of mentality for performance in
 tennis.
 
@@ -74,21 +76,23 @@ has received limited scientific study and there is currently a lack of
 quantitative evidence about the mentalities of today's top tennis players.
 
 Prior work attempting to measure the mental aspect of elite athletic performance
-has been limited for all sports let alone tennis, reflecting the challenges of
-measuring the mental game. Prior approaches have largely been qualitative in
-nature, relying on interviews\cite{young2011understanding} or
-surveys\cite{taylor1987predicting} of players and coaches to gain insight about
-the mental game. These studies have the drawback that they presuppose that
-salient mental skills can be measured with a questionnaire or elicited from a
-conversation with coaches and players. Such studies have also not taken
-advantage of the many years of historical performance data and what it can
-reveal about the mental game.
+has been limited for all sports, reflecting the challenges of measuring the
+mental game. Prior approaches have largely been qualitative in nature, relying
+on interviews\cite{young2011understanding} or surveys\cite{taylor1987predicting}
+of players and coaches to gain insight about the mental game. These studies have
+the drawback that they presuppose that salient mental skills can be measured
+with a questionnaire or elicited from a conversation with coaches and
+players. Such studies have also not taken advantage of the many years of
+historical performance data and what it can reveal about the mental
+game. \fxnote{Perhaps we could also say that tennis could be particularly suited
+  for measuring mental effects, given that it's an individual sport and we have
+  quite fine-grained data?}
 
 In this paper, we present a novel quantitative method to investigate the
 mentality of professional tennis players from observed match performance. Our
-approach is based on the premise that tennis player's reveal aspects of their
+approach is based on the premise that tennis players reveal aspects of their
 mental skills in the way they respond to changes in the state of play over the
-course of match, i.e. the dynamics of a match. Using nearly 3 million points
+course of a match, i.e. the dynamics of a match. Using nearly 3 million points
 played in professional singles matches for the men's and women's tours between
 2011 and 2015, we quantify player response patterns to point dynamics, identify
 common mentalities, and evaluate the importance of mentality for match
@@ -179,42 +183,49 @@ E\lbrack y_{ijk} \rbrack = (\alpha_{i} + \beta_{j} + \theta)' \mathbf{X}_{ijk}.
 baseline serve and return ability of the player and opponent, and $p$ dynamic
 features that affect performance on the point outcome (e.g. being a set down,
 facing a break point, etc.). The parameters $\theta$ are fixed dynamic effects
-that represent how player's are affected by conditions on average. The
-parameters $\alpha_i$ and $\beta_j$ are player random effects for each feature
-for the $i$th player who is serving and $j$th player who is returning and each
-are drawn from from a multivariate normal distribution with zero mean and
-general variance structure. The player random effects allow that some players
-could be more or less affected by the state of a point and that these effects
-could additionally depend on whether a player is serving or returning. The
-combination of the server and returner effects determine the expected win
-probability for the point.
+that represent how players are affected by conditions \fxnote{I know you
+  mentioned you were looking for a different word. ``match situations'', maybe?}
+on average. The parameters $\alpha_i$ and $\beta_j$ are player random effects
+for each feature for the $i$th player who is serving and $j$th player who is
+returning and each are drawn from from a multivariate normal distribution with
+zero mean and general variance structure. The player random effects allow that
+some players could be more or less affected by the state of a point and that
+these effects could additionally depend on whether a player is serving or
+returning. The combination of the server and returner effects determine the
+expected win probability for the point.
 
 \textit{Remarks.} The PDM can be viewed as an extension of two established
 models for predicting point outcomes in tennis. When the feature matrix
 $\mathbf{X}$ includes only an intercept, the PDM becomes a regression model for
-the opponent-adjustment proposed by Barnett and Clarke. Klaassen and Magnus also
-proposed a dynamic model to test for deviations from the IID model, which says
-that points in a match are independent and identically distributed. In contrast
-to the PDM, the model of Klaassen and Magnus considers a limited number of
-dynamic effects and does not incorporate player-specific effects, which are the
-parameters of primary interest in the present work.
+the opponent adjustment proposed by Barnett and Clarke
+\fxnote{\cite{barnett2005combining}}. Klaassen and Magnus also proposed a
+dynamic model to test for deviations from the IID model
+\fxnote{\cite{klaassen2001points}}, which says that points in a match are
+independent and identically distributed. In contrast to the PDM, the model of
+Klaassen and Magnus considers a limited number of dynamic effects and does not
+incorporate player-specific effects, which are the parameters of primary
+interest in the present work.
 
 \subsection{Predictors}
 
 We fit the PDM with eleven candidate predictors that are listed in
 Table~\ref{tab:description}. The candidates included a range of dynamic point,
-game, and set conditions. The majority of the point conditions focus on various
-types of pressure situations, including indicators of whether a point occurs
-during a tiebreak, is a break point opportunity for the returner, or a point
-away from a break point opportunity (Break point -1). These predictors can be
-considered types of important points because they have a greater influence on
-the game or set outcomes than other points. We also include a probabilistic
-measure of point importance, defined by Morris\cite{morris1977most}, that is
-equal to the average change in match win probability when the current point is
-won compared to win it is lost, given the state of the match at this point. One
-final point condition is an indicator of whether the server won the previous
-point (Last won), which captures short-term correlation between points that
-could arise from a one-point hot hand effect, for example.
+game, and set conditions \fxnote{...and represent our attempt to identify as
+  many types of pressuring situations as possible...? Maybe compare against what
+  Klaassen \& Magnus chose and how and why we chose different ones?}. The
+majority of the point conditions focus on various types of pressure situations,
+including indicators of whether a point occurs during a tiebreak, is a break
+point opportunity for the returner, or a point away from a break point
+opportunity (Break point -1). These predictors can be considered types of
+important points because they have a greater influence on the game or set
+outcomes than other points. We also include a probabilistic measure of point
+importance, defined by Morris\cite{morris1977most}, that is equal to the average
+change in match win probability when the current point is won compared to win it
+is lost, given the state of the match at this point. One final point condition
+is an indicator of whether the server won the previous point (Last won
+\fxnote{This is now ``Just won'' I think?}), which captures short-term
+correlation between points that could arise from a one-point hot hand effect,
+for example.
 
 Three predictors contained information about game history. Two concerned missed
 opportunities to break service and how this affected the subsequent service game
@@ -233,6 +244,9 @@ longer term momentum effects than those due to the outcome of the previous
 point, we tracked the point spread across games within a set, subtracting the
 points won in the set by the player serving from those of the player returning.
 
+\fxnote{Like the note above mentioned, I think this part is good but could do
+  with a bit more explanation of why we chose the predictors we did...?}
+
 
 \subsection{Model Estimation}
 
@@ -245,13 +259,13 @@ efficient within the generalized linear family. However, the model is most
 appropriate for continuous outcomes, whose mean, unlike a binary outcome, does
 not have a constrained support.
 
-Klaassen and Magnus have previously shown that the linear model works well in
-practice for modeling point win probabilities. We also conducted our own
-investigation by obtaining marginal predictions for the dynamic effects using a
-logistic model and comparing these to their corresponding effects with the
-linear probability model. The effects differed by no more than one significant
-digit, indicating that the lack of constrained estimation had a negligible
-impact on the PDM estimates.
+Klaassen and Magnus have previously shown \fxnote{\cite{klaassen2001points}}
+that the linear model works well in practice for modeling point win
+probabilities. We also conducted our own investigation by obtaining marginal
+predictions for the dynamic effects using a logistic model and comparing these
+to their corresponding effects with the linear probability model. The effects
+differed by no more than one significant digit, indicating that the lack of
+constrained estimation had a negligible impact on the PDM estimates.
 
 In addition to the PDM, we fit two additional models for the purpose of
 evaluating the overall improvement in prediction performance with the inclusion
@@ -266,10 +280,10 @@ model.
 
 To summarize the overall magnitude and significance of the dynamic effects, we
 fit the ADM with all of the available data and computed 95\% confidence
-intervals for each effect.  The added value of including player-specific effects
+intervals for each effect. The added value of including player-specific effects
 for each dynamic feature was measured by the change in the Akaike Information
 Criterion (AIC). The AIC is a measure of overall model fit that allows
-comparisons between non-nested models and awards more parsimonious models. For
+comparisons between non-nested models and rewards more parsimonious models. For
 each dynamic predictor, we estimated the change in AIC with the inclusion of
 player-specific effects versus a constant effect for all players.
 
@@ -285,7 +299,6 @@ to two alternative models: the ADM that assumes constant dynamic effects for all
 players and an IID model that assumes no dynamic effects, i.e. a constant point
 win probability for each server. Our primary metric of performance was log loss,
 as it places a high penalty on overconfident predictions\cite{yuan2015mixture}.
-
 
 
 \subsection{Identifying Mentality Types}
@@ -369,9 +382,10 @@ The average importance of a point in a tennis match was 5 probability points,
 corresponding to an expected increase in match win probability of 5 percentage
 points when the point was won versus lost (Table~\ref{tab:description}). In
 recent years, we also found that the average number of points played in a game
-was 6 for both tours. The average point spread over the games in a set was
-approximately zero but it was not unusual to observe differences as large as 10
-points.
+was 6 for both tours. \fxnote{Was it different before, or why in recent years?}
+The average point spread over the games in a set was approximately zero but it
+was not unusual to observe differences as large as 10 points. \fxnote{Maybe
+  explain a little -- when a player falls far behind in a set...?}
 
 \subsection{Average Dynamic Effects}
 
@@ -455,7 +469,7 @@ were runners up with a roughly 1 percentage point effect size, a server being a
 set up adding to the server's advantage and server being a set down adding to
 the returner's advantage. Other game and point conditions had more moderate
 effects, with some indication of a relatively stronger negative effects on
-importnat points and tiebreak points for female players compared to male
+important points and tiebreak points for female players compared to male
 players.
 
 \subsection{Player Dynamic Effects}
@@ -530,105 +544,101 @@ average and player-specific dynamic models were statistically equivalent.
 
 \subsubsection{Men's Tour}
 
-The eight dynamic factors that improved the predictive performance of
-point outcomes for the men's tour revealed eight unique mentalities
-among the male players who had competed in one or more of the 2015
-Grand Slams. The players with each mentality type are displayed in
-Figure~\ref{fig:atp_dendro} as a dendrogram in which mentalities that
-are more similar are closer together in their order from top to
-bottom. The underlying feature profiles for each group are displayed in
-Figure~\ref{fig:atp_coord}. Here, each line is a specific player's
-set of dynamic effects on serve and return and effects are scaled so
-that they all have an equal standard deviation of one. A smoothed
-regression line is plotted over the observed profiles in each panel to
-highlight the key differences from the status quo (`The Field') shown
-in gray.
+The eight dynamic factors that improved the predictive performance of point
+outcomes for the men's tour revealed eight unique mentalities among the male
+players who had competed in one or more of the 2015 Grand Slams. The players
+with each mentality type are displayed in Figure~\ref{fig:atp_dendro} as a
+dendrogram in which mentalities that are more similar are closer together in
+their order from top to bottom. The underlying feature profiles for each group
+are displayed in Figure~\ref{fig:atp_coord}. Here, each line is a specific
+player's set of dynamic effects on serve and return and effects are scaled so
+that they all have an equal standard deviation of one. A smoothed regression
+line is plotted over the observed profiles in each panel to highlight the key
+differences from the status quo (`The Field') shown in gray.
 
-\textit{The Field}. We begin with a description of the mentality
-suggested by the cluster with the largest number of players and,
-consequently, the most common profile among top male players. This
-group exhibits a drop in performance when pressure is on the serve, as
-indicated by the negative effects when a set down and facing important
-points, including break points and tiebreaks (Figure~\ref{fig:atp_coord}). These players also
-exhibit sensitivity to the state of the point score, as is indicated
-by the positive effects on winning the previous point, having an edge
-in point spread, or being a set up. These `hot hand' effects induce a
-corresponding loser's curse on the return game, in which players who
-fall behing are even less likely to win a point than when even or
-ahead in the score. 
+\textit{The Field}. We begin with a description of the mentality suggested by
+the cluster with the largest number of players and, consequently, the most
+common profile among top male players. This group exhibits a drop in performance
+when pressure is on the serve, as indicated by the negative effects when a set
+down and facing important points, including break points and tiebreaks
+(Figure~\ref{fig:atp_coord}). These players also exhibit sensitivity to the
+state of the point score, as is indicated by the positive effects on winning the
+previous point, having an edge in point spread, or being a set up. These `hot
+hand' effects induce a corresponding loser's curse on the return game, in which
+players who fall behing are even less likely to win a point than when even or
+ahead in the score.
 
-\textit{John Isner}. One of two players with a unique profile was big
-server John Isner. The large positive effects on serve indicate
-greater overall mental toughness when serving than any other player
-evaluated. On the defense game, Isner's mentality showed a lack of
-confidence on break point and other important points. His performance
-on the return game was otherwise similar to the field, with the
-exception of tiebreaks where he showed strong performance whether
-returning or serving. 
+\textit{John Isner}. One of two players with a unique profile was big server
+John Isner. The large positive effects on serve indicate greater overall mental
+toughness when serving than any other player evaluated. On the defense game,
+Isner's mentality showed \fxnote{maybe turn into ``may indicate'' given that it
+  could also be something else?} a lack of confidence on break point and other
+important points. His performance on the return game was otherwise similar to
+the field, with the exception of tiebreaks where he showed strong performance
+whether returning or serving.
 
-\textit{Tiebreak Specialists}. Like Isner, these players shine on
-tiebreak points, raising their performance when serving or
-returning. On other point types, they also exhibit a similar disparity
-between the service and return games, with greater overall confidence
-on serve, but to a less extreme degree than Isner.
+\textit{Tiebreak Specialists}. Like Isner, these players shine on tiebreak
+points, raising their performance when serving or returning. On other point
+types, they also exhibit a similar disparity between the service and return
+games, with greater overall confidence on serve, but to a less extreme degree
+than Isner.
 
-\textit{Fabio Fognini}. The second player found to have a unique
-mentality was Fabio Fognini, Italian No. 1 at the time of this
-writing. Fognini's distinctive characteristics backup the mercurial
-label he has often been given by the media\footnote{Medlock,
-  W. (June 14, 2015) `Ranking the Most Unpredictable Tennis Players
-  Today'. Retrieved from: \url{http://bleacherreport.com/articles/2495031-ranking-the-most-unpredictable-tennis-players-today/}}. While being unusually
-mentally strong on more important points (especially on the return
-game) and on making break point opportunities, the large negative
-effects when a point or set down on return indicate that he is one of the
-players most susceptible to collapse.
+\textit{Fabio Fognini}. The second player found to have a unique mentality was
+Fabio Fognini, Italian No. 1 at the time of this writing. Fognini's distinctive
+characteristics backup the mercurial label he has often been given by the
+media\footnote{Medlock, W. (June 14, 2015) `Ranking the Most Unpredictable
+  Tennis Players Today'. Retrieved from:
+  \url{http://bleacherreport.com/articles/2495031-ranking-the-most-unpredictable-tennis-players-today/}}. While
+being unusually mentally strong on more important points (especially on the
+return game) and on making break point opportunities, the large negative effects
+when a point or set down on return indicate that he is one of the players most
+susceptible to collapse.
 
-\textit{Champions}. The players who currently hold the most Grand Slam
-titles Novak Djokovic, Roger Federer, Andy Murray and Rafael Nadal
-(colloquially referred to as `The Big Four') were all found in the
-same mentality cluster, suggesting a `Champion's mentality'. The
-players in this group exhibit similar strength on serve as the big servers among the
-tiebreak specialists except for the boost in performance on
-tiebreaks. On the return game, these players set themselves apart with
-the mental toughness they show in clutch situations: important points and creating break
-point opportunities. While the majority of these players also showed a
-greater ability to convert break points than other competitors, it is
-interesting to note that Roger Federer was most similar to the field
-on this characteristic. 
+\textit{Champions}. The players who currently hold the most Grand Slam titles
+Novak Djokovic, Roger Federer, Andy Murray and Rafael Nadal (colloquially
+referred to as `The Big Four') were all found in the same mentality cluster,
+suggesting a `Champion's mentality'. The players in this group exhibit similar
+strength on serve as the big servers among the tiebreak specialists except for
+the boost in performance on tiebreaks. On the return game, these players set
+themselves apart with the mental toughness they show in clutch situations:
+important points and creating break point opportunities. While the majority of
+these players also showed a greater ability to convert break points than other
+competitors, it is interesting to note that Roger Federer was most similar to
+the field on this characteristic.
 
-\textit{Opportunity Makers}. This group of players had many of the
-tendencies of the champions group but to a lesser degree. The most
-consistent positive trait observed compared to the field was the
-tendency to raise their game to make an opportunity to break serve,
-shown by the positive effect on the point away from break point on
-the return game. Several of the most exciting players today's
-game\textemdash Jo Wilfried Tsonga and Gael Monfils\textemdash are
-included in this group.
+\textit{Opportunity Makers}. This group of players had many of the tendencies of
+the champions group but to a lesser degree. The most consistent positive trait
+observed compared to the field was the tendency to raise their game to make an
+opportunity to break serve, shown by the positive effect on the point away from
+break point on the return game. Several of the most exciting players of today's
+game\textemdash Jo-Wilfried Tsonga and Gaël Monfils\textemdash are included in
+this group. \fxnote{I like that you pick the players out, but maybe ``most
+  exciting'' could be a bit subjective? Maybe tone down to ``considered to be
+  most exciting'' or something?}
 
-\textit{Tight}. This mentality was the only one that was noteworthy
-for being weaker on certain points than the average top
-player. Specifically, in clutch situations on serve and when down a
-point or a set on the return game, these players showed a greater drop
-in win probability than any others. Finding former
-World No. 1 Lleyton Hewitt in this group was unexpected but could be
-explained by the point-level data only covering the final years of his career.
+\textit{Tight}. This mentality was the only one that was noteworthy for being
+weaker on certain points than the average top player. Specifically, in clutch
+situations on serve and when down a point or a set on the return game, these
+players showed a greater drop in win probability than any others. Finding former
+World No. 1 Lleyton Hewitt in this group was unexpected but could be explained
+by the point-level data only covering the final years of his
+career. \fxnote{This is really good now!}
 
-\textit{Score Keepers}. In addition to being generally less confident
-on serve, the final group of players were unique in
-their response to the outcome of the previous point, showing a hot
-hand response when winning a point on serve and a corresponding `cool
-hand' after losing a point on return. Thus, the performance of these
-players are unusually sensitive to the short-term state of the score. 
+\textit{Score Keepers}. In addition to being generally less confident on serve,
+the final group of players were unique in their response to the outcome of the
+previous point, showing a hot hand response when winning a point on serve and a
+corresponding `cool hand' after losing a point on return. Thus, the performance
+of these players are unusually sensitive to the short-term state of the score.
 
 \subsubsection{Women's Tour}
 
-Considering the six player-specific dynamics for the women's tour, eight unique mentalities were also found among players competing
-in the 2015 Grand Slams (Figure~\ref{fig:wta_dendro}). 
+Considering the six player-specific dynamics for the women's tour, eight unique
+mentalities were also found among players competing in the 2015 Grand Slams
+(Figure~\ref{fig:wta_dendro}).
 
-\textit{The Field}. Like male players, the majority of the service
-game of top female
-players is negatively affected under pressure but benefits from a
-recent point win\textemdash a mini hot hand effect. 
+\textit{The Field}. Like male players, the majority of the service game of top
+female players is negatively affected under pressure but benefits from a recent
+point win\textemdash a mini hot hand effect.
 
 \textit{Fighters}. Several of the top players were found to raise the level of
 their play after tightly contested games (Figure~\ref{fig:wta_coord}). These players had large
